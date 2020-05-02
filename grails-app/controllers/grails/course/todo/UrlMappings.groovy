@@ -3,7 +3,7 @@ package grails.course.todo
 class UrlMappings {
 
     static mappings = {
-        "/kryf/$controller/$action?/$id?(.$format)?"{
+        "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
             }

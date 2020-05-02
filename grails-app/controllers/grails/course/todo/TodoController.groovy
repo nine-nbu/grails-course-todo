@@ -47,7 +47,7 @@ class TodoController {
     }
 
     def edit(Long id) {
-        [todo: todoService.get(id)]
+        respond todoService.get(id)
     }
 
     def update(Todo todo) {
