@@ -11,6 +11,7 @@ class TodoController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        println params
         params.max = Math.min(max ?: 10, 100)
         respond todoService.list(params), model:[todoCount: todoService.count()]
     }
