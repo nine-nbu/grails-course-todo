@@ -6,7 +6,7 @@ import grails.converters.XML
 class TestController {
 
     def index() {
-        render([text: 'Hej med dig!'] as XML)
+        render([text: 'Hej med dig!'] as JSON)
 
     }
 }

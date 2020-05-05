@@ -14,13 +14,12 @@ class TodoServiceSpec extends Specification {
 
     private Long setupData() {
         // TODO: Populate valid domain instances and return a valid ID
-        //new Todo(...).save(flush: true, failOnError: true)
-        //new Todo(...).save(flush: true, failOnError: true)
-        //Todo todo = new Todo(...).save(flush: true, failOnError: true)
-        //new Todo(...).save(flush: true, failOnError: true)
-        //new Todo(...).save(flush: true, failOnError: true)
-        assert false, "TODO: Provide a setupData() implementation for this generated test suite"
-        //todo.id
+        new Todo(title: 'Item 1').save(flush: true, failOnError: true)
+        new Todo(title: 'Item 2').save(flush: true, failOnError: true)
+        Todo todo = new Todo(title: 'Item 3').save(flush: true, failOnError: true)
+        new Todo(title: 'Item 4').save(flush: true, failOnError: true)
+        new Todo(title: 'Item 5').save(flush: true, failOnError: true)
+        todo.id
     }
 
     void "test get"() {
@@ -38,7 +37,7 @@ class TodoServiceSpec extends Specification {
 
         then:
         todoList.size() == 2
-        assert false, "TODO: Verify the correct instances are returned"
+        todoList*.title == ['Item 3','Item 4']
     }
 
     void "test count"() {
@@ -64,8 +63,7 @@ class TodoServiceSpec extends Specification {
 
     void "test save"() {
         when:
-        assert false, "TODO: Provide a valid instance to save"
-        Todo todo = new Todo()
+        Todo todo = new Todo(title: 'New todo')
         todoService.save(todo)
 
         then:

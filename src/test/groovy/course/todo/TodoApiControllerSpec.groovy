@@ -1,4 +1,4 @@
-package grails.course.todo
+package course.todo
 
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
@@ -12,7 +12,7 @@ class TodoApiControllerSpec extends Specification implements ControllerUnitTest<
     }
 
     void "test something"() {
-        expect:"fix me"
+        expect: "fix me"
             true == false
     }
 }
