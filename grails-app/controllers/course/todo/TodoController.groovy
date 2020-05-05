@@ -1,7 +1,6 @@
-package grails.course.todo
+package course.todo
 
 import grails.validation.ValidationException
-import org.springframework.beans.factory.annotation.Autowired
 
 import static org.springframework.http.HttpStatus.*
 

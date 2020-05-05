@@ -1,4 +1,4 @@
-package grails.course.todo
+package course.todo
 
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification

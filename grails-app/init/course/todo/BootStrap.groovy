@@ -1,4 +1,4 @@
-package grails.course.todo
+package course.todo
 
 class BootStrap {
 

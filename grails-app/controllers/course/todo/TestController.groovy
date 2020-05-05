@@ -1,4 +1,4 @@
-package grails.course.todo
+package course.todo
 
 import grails.converters.JSON
 import grails.converters.XML

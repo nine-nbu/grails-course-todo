@@ -1,4 +1,4 @@
-package grails.course.todo
+package course.todo
 
 class ActionItem {
     String name
@@ -7,7 +7,7 @@ class ActionItem {
     boolean done
 
     String toString() {
-        "Action($id): $name (due: $due, done: ${done ? 'yes' : 'no'}"
+        "Action($id): $name (due: $due, done: ${done ? 'yes' : 'no'})"
     }
 
     static belongsTo = [todo: Todo]

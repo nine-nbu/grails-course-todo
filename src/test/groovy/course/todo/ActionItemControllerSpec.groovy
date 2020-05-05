@@ -1,9 +1,9 @@
-package grails.course.todo
+package course.todo
 
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class TestControllerSpec extends Specification implements ControllerUnitTest<TestController> {
+class ActionItemControllerSpec extends Specification implements ControllerUnitTest<ActionItemController> {
 
     def setup() {
     }

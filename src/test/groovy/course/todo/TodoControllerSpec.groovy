@@ -1,7 +1,6 @@
-package grails.course.todo
+package course.todo
 
 import grails.testing.gorm.DataTest
-import grails.testing.gorm.DomainUnitTest
 import grails.testing.web.controllers.ControllerUnitTest
 import grails.validation.ValidationException
 import spock.lang.*
