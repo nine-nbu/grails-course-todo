@@ -1,0 +1,12 @@
+import course.todo.Todo
+
+model {
+    Todo todo
+}
+json {
+    hal.links(todo)
+    id todo.id
+    title todo.title
+    description todo.description
+    items tmpl.actionItem(todo.items)
+}

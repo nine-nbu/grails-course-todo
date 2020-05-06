@@ -1,0 +1,17 @@
+import course.todo.Todo
+
+model {
+    Iterable<Todo> todoList
+    Integer todoCount
+    Integer max = 10
+    Integer offset = 0
+    String sort
+    String order
+}
+
+json {
+    hal.paginate(Todo, todoCount, max, offset, sort, order)
+    items tmpl.todo(todoList)
+}
+
+

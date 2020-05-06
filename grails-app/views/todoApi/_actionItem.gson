@@ -1,0 +1,12 @@
+import course.todo.ActionItem
+
+model {
+    ActionItem actionItem
+}
+json {
+    id actionItem.id
+    name actionItem.name
+    description actionItem.description
+    due actionItem.due
+    done actionItem.done
+}
