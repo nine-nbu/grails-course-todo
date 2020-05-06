@@ -14,7 +14,7 @@ class ActionItem {
 
     static constraints = {
         name validator: { value, object ->
-            if (!object.done && object.due.before(new Date() + 3)) {
+            if (!object.done && object.due?.before(new Date() + 3)) {
                 return 'too.late.buster'
             }
             if(object.done && object.id && object.getPersistentValue('name') != value) {

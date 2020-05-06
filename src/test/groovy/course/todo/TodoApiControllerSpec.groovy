@@ -1,18 +1,26 @@
 package course.todo
 
+import grails.test.hibernate.HibernateSpec
 import grails.testing.web.controllers.ControllerUnitTest
-import spock.lang.Specification
 
-class TodoApiControllerSpec extends Specification implements ControllerUnitTest<TodoApiController> {
+class TodoApiControllerSpec extends HibernateSpec implements ControllerUnitTest<TodoApiController> {
 
     def setup() {
+        Todo.saveAll(
+                new Todo(title: 'Eat'),
+                new Todo(title: 'Work'),
+                new Todo(title: 'Exercise'),
+                new Todo(title: 'Sleep'))
+
     }
 
-    def cleanup() {
-    }
+    void 'test the search action finds results'() {
+        when: 'A query is executed that finds results'
+            controller.search('E', 10)
 
-    void "test something"() {
-        expect: "fix me"
-            true == false
+        then: 'The response is correct'
+            response.json.size() == 2
+            response.json[0].title == 'Eat'
+            response.json[1].title == 'Exercise'
     }
 }

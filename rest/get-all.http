@@ -1,0 +1,9 @@
+GET http://localhost:8123/api/todo
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-05-05T113339.200.json
+<> 2020-05-05T113317.200.json
+
+###
+

@@ -1,0 +1,24 @@
+### Send POST request with json body
+POST http://localhost:8123/api/todo
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title": "Learn Rest",
+    "items": [
+        {
+            "name": "The basics",
+            "description": "How can I GET it?",
+            "due": "2020-05-10T21:38:17+0000",
+            "done": false
+        },
+        {
+            "name": "Advanced",
+            "description": "Is there a blog POST for this?",
+            "due": "2020-05-15T21:38:17+0000",
+            "done": false
+        }
+    ]
+}
+
+###
