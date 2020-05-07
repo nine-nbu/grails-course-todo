@@ -1,5 +1,6 @@
 package course.todo
 
+import grails.converters.JSON
 import grails.validation.ValidationException
 
 import static org.springframework.http.HttpStatus.*
@@ -86,6 +87,19 @@ class TodoController {
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
+        }
+    }
+
+    def changeDue(DueCommand command) {
+        respond(todoService.list(), model: [command: command ?: new DueCommand()])
+    }
+
+    def doChangeDue(DueCommand command) {
+        if(command.validate()) {
+            todoService.changeDueDate(command.todo, command.newDueDate)
+            redirect(action: 'show', id: command.todo.id)
+        } else {
+            respond(command.errors, view: 'changeDue')
         }
     }
 

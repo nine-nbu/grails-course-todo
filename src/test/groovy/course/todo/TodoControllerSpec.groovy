@@ -19,7 +19,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the index action returns the correct model"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * list(_) >> []
                 1 * count() >> 0
             }
@@ -53,7 +53,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the save action correctly persists"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * save(_ as Todo)
             }
 
@@ -74,7 +74,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the save action with an invalid instance"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * save(_ as Todo) >> { Todo todo ->
                     throw new ValidationException("Invalid instance", todo.errors)
                 }
@@ -93,7 +93,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the show action with a null id"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * get(null) >> null
             }
 
@@ -106,7 +106,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the show action with a valid id"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * get(2) >> new Todo()
             }
 
@@ -119,7 +119,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the edit action with a null id"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * get(null) >> null
             }
 
@@ -132,7 +132,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the edit action with a valid id"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * get(2) >> new Todo()
             }
 
@@ -157,7 +157,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the update action correctly persists"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * save(_ as Todo)
             }
 
@@ -178,7 +178,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the update action with an invalid instance"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * save(_ as Todo) >> { Todo todo ->
                     throw new ValidationException("Invalid instance", todo.errors)
                 }
@@ -207,7 +207,7 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the delete action with an instance"() {
         given:
-            controller.todoService = Mock(TodoService) {
+            controller.todoService = Mock(ITodoService) {
                 1 * delete(2)
             }
 
