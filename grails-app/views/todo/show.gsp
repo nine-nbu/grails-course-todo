@@ -20,6 +20,7 @@
             <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:display bean="todo" />
+            <g:todoItems items="${todo.items}"/>
             <g:form resource="${this.todo}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.todo}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
