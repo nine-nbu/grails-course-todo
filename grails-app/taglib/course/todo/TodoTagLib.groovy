@@ -4,7 +4,7 @@ class TodoTagLib {
     static defaultEncodeAs = [taglib: 'html']
     static encodeAsForTags = [todoItems: [taglib:'raw'], otherTagName: [taglib:'none']]
 
-    def todoItems = { attrs ->
+    def todoItems = { attrs, body ->
         List<ActionItem> items = attrs.items as List<ActionItem>
         if (items == null) {
             throwTagError('TagLib [t:todoItems] missing attribute [items]')
@@ -14,26 +14,23 @@ class TodoTagLib {
         List<ActionItem> overdue = items.findAll { !it.done && it.due.before(new Date()) }
         List<ActionItem> done = items.findAll { it.done }
 
-        if(pending) {
-            out << "<h3>Pending:</h3><ul>"
+        Closure render = body ?: { it }
 
-            pending.each {
-                out << "<li>${it}</li>"
-            }
-        }
-        if(overdue) {
-            out << "<h3>Overdue:</h3><ul>"
+        renderList('Pending', pending, render)
+        renderList('Overdue', overdue, render)
+        renderList('Done', done, render)
+    }
 
-            overdue.each {
-                out << "<li>${it}</li>"
-            }
-        }
-        if(done) {
-            out << "<h3>Done:</h3><ul>"
+    private void renderList(String title, List<ActionItem> items, Closure render) {
+        if(items) {
+            out << "<h3>$title:</h3><ul>"
 
-            done.each {
-                out << "<li>${it}</li>"
+            items.sort { a,b -> a.due <=> b.due } each {
+                pageScope.item = it
+                out << "<li>${render.call(it)}</li>"
             }
+            out << "</li>"
+
         }
     }
 }
