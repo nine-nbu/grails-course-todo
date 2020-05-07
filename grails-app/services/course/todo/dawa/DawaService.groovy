@@ -14,7 +14,7 @@ class DawaService implements DataBinder {
 
     List<Region> getRegioner() {
 
-        def json = dawaResource.getJson('regionxer')
+        def json = dawaResource.getJson('regioner')
         return json.collect {
             def region = new Region()
             bindData(region, it)
