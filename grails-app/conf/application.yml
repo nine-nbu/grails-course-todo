@@ -139,3 +139,6 @@ grails:
             - "yyyy-MM-dd'T'HH:mm:ss'Z'"
             - "yyyy-MM-dd HH:mm:ss.S z"
             - "yyyy-MM-dd'T'HH:mm:ssX"
+---
+dawa:
+    url: https://dawa.aws.dk
