@@ -22,8 +22,7 @@
             <g:hasErrors bean="${this.todo}">
             <ul class="errors" role="alert">
                 <g:eachError bean="${this.todo}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>                </g:eachError>
             </ul>
             </g:hasErrors>
             <g:form resource="${this.todo}" method="PUT">

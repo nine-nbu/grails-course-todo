@@ -1,0 +1,6 @@
+import course.todo.Todo
+
+model {
+    Todo todo
+}
+json g.render(template: "todo", model: [todo: todo])

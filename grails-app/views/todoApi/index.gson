@@ -1,0 +1,6 @@
+import course.todo.Todo
+
+model {
+    Iterable<Todo> todoList
+}
+json tmpl.todo(todoList)

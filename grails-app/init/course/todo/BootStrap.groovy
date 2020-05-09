@@ -1,8 +1,13 @@
 package course.todo
 
+import grails.util.Environment
+
 class BootStrap {
 
     def init = { servletContext ->
+        if(Environment.current != Environment.DEVELOPMENT) {
+            return
+        }
         def list = [
                 [title: 'Learn Grails', items: [
                         [name: 'The basics', description: 'Learn what a Grails project is', due: new Date() + 5, done: false],

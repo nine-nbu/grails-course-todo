@@ -88,6 +88,19 @@ class TodoController {
         }
     }
 
+    def changeDue() {
+        respond(todoService.list(), model: [command: new DueCommand()])
+    }
+
+    def onChangeDue(DueCommand command) {
+        if (!command.hasErrors()) {
+            //todoService.changeDueDate(command.todo, command.newDueDate)
+            redirect(action: 'show', id: command.todo.id)
+        } else {
+            respond(command.errors, view: 'changeDue')
+        }
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {

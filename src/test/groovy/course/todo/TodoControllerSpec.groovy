@@ -19,15 +19,17 @@ class TodoControllerSpec extends Specification implements ControllerUnitTest<Tod
 
     void "Test the index action returns the correct model"() {
         given:
-            controller.todoService = Mock(TodoService) {
-                1 * list(_) >> []
-                1 * count() >> 0
-            }
+            controller.todoService = Mock(TodoService)
 
         when: "The index action is executed"
             controller.index()
 
-        then: "The model is correct"
+        then: "The following interactions are performed"
+            1 * controller.todoService.list(_) >> []
+            1 * controller.todoService.count() >> 0
+            0 * controller.todoService._(*_)
+
+        and: "The model is correct"
             !model.todoList
             model.todoCount == 0
     }

@@ -14,8 +14,10 @@ class ActionItemSpec extends Specification implements DomainUnitTest<ActionItem>
 
         then:
             ai.hasErrors()
-            ai.errors.fieldErrors*.field == ['name', 'due', 'todo']
-            ai.errors.fieldErrors.each { assert it.code == 'nullable' }
+            with(ai.errors.fieldErrors) {
+                it*.field == ['name', 'due', 'todo']
+                it.each { assert it.code == 'nullable' }
+            }
     }
 
 
